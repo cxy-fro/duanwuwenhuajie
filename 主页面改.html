@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI绘端午文化节</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+        .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+        .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .container {
+            max-width: calc(100% - 240px);
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .navbar a:hover {
+            background-color: var(--accent-color);
+            color: black;
+        }
+
+        /* 作品区域样式 */
+        .work-area {
+            display: flex;
+            margin-top: 50px;
+        }
+
+        .work-wall-text {
+            writing-mode: vertical-lr;
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-right: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .work-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+
+    <div class="container">
+        <h1>“粽韵传千年・AI绘端午”文化节</h1>
+        <div class="navbar">
+            <a href="02子页面端午起源.html" target="_blank">端午起源</a>
+            <a href="03子页面传统习俗.html" target="_blank">传统习俗</a>
+            <a href="04子页面端午美食.html" target="_blank">端午美食</a>
+            <a href="05子页面民俗故事.html" target="_blank">民俗故事</a>
+            <a href="06征集令官网.html" target="_blank">征集令</a>
+            <!-- 新增的问卷调查按钮 -->
+            <a href="http://dysxjxx.51vip.biz/wenjuan_index.php" target="_blank">问卷调查</a>
+            <a href="https://chat.baidu.com/search" target="_blank">百度AI工具</a>
+            <a href="http://192.168.1.201:8082" target="_blank">提交作品</a>
+        </div>
+
+        <!-- 新增作品区域 -->
+        <div class="work-area">
+            <div class="work-wall-text">作品墙</div>
+            <div class="work-gallery">
+                <!-- 这里可以添加实际的图片链接 -->
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277308/39_tnlqe7.png" alt="作品1">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277681/41_lp8xap.png" alt="作品2">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277306/07_wkq1zp.png" alt="作品3">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277307/08_emfzqf.png" alt="作品4">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277305/51_ay1vsk.png" alt="作品5">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277305/42_rwctmu.png" alt="作品6">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277304/01_mqhkqc.png" alt="作品7">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277706/48_21%E5%8D%8E%E6%A2%93%E8%BE%B0_1_dfzi9o.png" alt="作品8">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277701/39_2_wmlmuz.png" alt="作品9">
+                <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745277304/48_2_s33er4.png" alt="作品10">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

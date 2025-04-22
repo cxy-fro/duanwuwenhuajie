@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>民俗故事</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* 竹子边框样式 */
+       .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+       .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+       .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* 内容容器样式 */
+       .container {
+            max-width: calc(100% - 240px);
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 图片容器样式 */
+       .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* 图片样式 */
+       .image-container img {
+            max-width: 48%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+    <div class="container">
+        <h1>民俗故事</h1>
+        <p>在端午节，有许多流传已久的民俗故事，其中最为人熟知的当属屈原投江的故事。屈原是战国时期楚国的大臣，他爱国爱民，一心想要使楚国强大起来。然而，他却遭到了奸臣的陷害，被楚怀王疏远。后来，楚国被秦国攻破，屈原悲愤交加，于五月初五投汨罗江自尽。百姓们为了纪念他，纷纷划船打捞他的尸体，并向江中投放粽子，以免鱼虾啃食他的身体。这就是端午节赛龙舟和吃粽子习俗的由来。</p>
+        <p>除了屈原的故事，还有伍子胥的传说。伍子胥是春秋时期吴国的大臣，他辅佐吴王阖闾成就霸业。但后来吴王夫差听信谗言，赐死了伍子胥，并将他的尸体投入江中。伍子胥含冤而死，化为涛神。百姓们为了纪念他，在端午节这一天举行祭祀活动。</p>
+        <div class="image-container">
+            <!-- 请替换为实际的图片链接 -->
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745202103/%E5%B1%88%E5%8E%9F_igyqnh.jpg" alt="端午民俗故事图片1">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745202091/%E4%BC%8D%E5%AD%90%E8%83%A5_bafn3e.jpg" alt="端午民俗故事图片2">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>端午美食</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* 竹子边框样式 */
+       .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+       .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+       .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* 内容容器样式 */
+       .container {
+            max-width: calc(100% - 240px);
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 图片容器样式 */
+       .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* 图片样式 */
+       .image-container img {
+            max-width: 23%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+    <div class="container">
+        <h1>端午美食</h1>
+        <ul>
+            <li>粽子：粽子是端午节最具代表性的美食。它以糯米为主要原料，根据不同地区的口味和习惯，加入各种馅料，如红枣、豆沙、鲜肉、火腿、蛋黄等。粽子的形状多样，有三角形、四角形、枕头形等。</li>
+            <li>雄黄酒：雄黄酒是用研磨成粉末的雄黄泡制的白酒或黄酒，一般在端午节饮用。古人认为雄黄可以克制蛇、蝎等百虫，“善能杀百毒、辟百邪、制蛊毒，人佩之，入山林而虎狼伏，入川水而百毒避”。</li>
+            <li>五黄：江浙一带有端午节吃“五黄”的习俗。五黄指黄瓜、黄鳝、黄鱼、咸鸭蛋黄、雄黄酒。此外浙北端午节还吃豆腐。</li>
+            <li>煎堆：福建晋江地区，端午节家家户户还要吃“煎堆”，就是用面粉、米粉或番薯粉和其他配料调成浓糊状煎成。相传古时闽南一带在端午节之前是雨季，阴雨连绵不止，民间说天公穿了洞，要“补天”。端午节吃了“煎堆”后雨便止了，人们说把天补好了。这种食俗由此而来。</li>
+        </ul>
+        <div class="image-container">
+            <!-- 请替换为实际的图片链接 -->
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200304/%E7%B2%BD%E5%AD%90_s4ete4.jpg" alt="端午美食图片1">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200303/%E9%9B%84%E9%BB%84%E9%85%92_ymk6eh.jpg" alt="端午美食图片2">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200303/%E4%BA%94%E9%BB%84_yjo2rt.jpg" alt="端午美食图片3">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200302/%E7%85%8E%E5%A0%86_wuzhet.jpg" alt="端午美食图片4">
+        </div>
+    </div>
+</body>
+
+</html>    

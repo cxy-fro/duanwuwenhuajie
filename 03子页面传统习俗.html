@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>传统习俗</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* 竹子边框样式 */
+       .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+       .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+       .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* 内容容器样式 */
+       .container {
+            max-width: calc(100% - 240px);
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 图片容器样式 */
+       .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* 图片样式 */
+       .image-container img {
+            max-width: 23%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+    <div class="container">
+        <h1>传统习俗</h1>
+        <ul>
+            <li>赛龙舟：是端午节的主要习俗。相传起源于古时楚国人因舍不得贤臣屈原投江死去，许多人划船追赶拯救。他们争先恐后，追至洞庭湖时不见踪迹。之后每年五月五日划龙舟以纪念之。借划龙舟驱散江中之鱼，以免鱼吃掉屈原的身体。竞渡之习，盛行于吴、越、楚。</li>
+            <li>吃粽子：端午节吃粽子，这是中国人民的又一传统习俗。粽子，又叫“角黍”、“筒粽”。其由来已久，花样繁多。每年五月初，中国百姓家家都要浸糯米、洗粽叶、包粽子，其花色品种更为繁多。从馅料看，北方多包小枣的北京枣粽；南方则有豆沙、鲜肉、火腿、蛋黄等多种馅料，其中以浙江嘉兴粽子为代表。</li>
+            <li>佩香囊：端午节小孩佩香囊，传说有避邪驱瘟之意，实际是用于襟头点缀装饰。香囊内有朱砂、雄黄、香药，外包以丝布，清香四溢，再以五色丝线弦扣成索，作各种不同形状，结成一串，形形色色，玲珑可爱。</li>
+            <li>悬艾叶菖蒲：民谚说：“清明插柳，端午插艾”。在端午节，人们把插艾和菖蒲作为重要内容之一。家家都洒扫庭除，以菖蒲、艾条插于门眉，悬于堂中。并用菖蒲、艾叶、榴花、蒜头、龙船花，制成人形或虎形，称为艾人、艾虎；制成花环、佩饰，美丽芬芳，妇人争相佩戴，用以驱瘴。</li>
+        </ul>
+        <div class="image-container">
+            <!-- 请替换为实际的图片链接 -->
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200303/%E8%B5%9B%E9%BE%99%E8%88%9F_ukyrhy.png" alt="端午传统习俗图片1">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200301/%E5%90%83%E7%B2%BD%E5%AD%90_pdqdyh.jpg" alt="端午传统习俗图片2">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200302/%E4%BD%A9%E9%A6%99%E5%9B%8A_buy1dc.png" alt="端午传统习俗图片3">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200305/%E6%82%AC%E8%89%BE%E5%8F%B6%E8%8F%96%E8%92%B2_dpqrpd.jpg" alt="端午传统习俗图片4">
+        </div>
+    </div>
+</body>
+
+</html>    

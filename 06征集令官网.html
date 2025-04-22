@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI绘端午文化节</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+        .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+        .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .upload-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .frame {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #posterArea {
+            width: 380px;
+            height: 520px;
+        }
+
+        .works-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .horizontal-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        #cardArea {
+            width: 340px;
+            height: 240px;
+        }
+
+        #bookmarkArea {
+            width: 180px;
+            height: 480px;
+        }
+
+        .upload-btn {
+            margin: 20px 0;
+            padding: 12px 40px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .description {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 12px;
+            color: #5A5A5A;
+            line-height: 1.8;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            display: none;
+            padding: 40px;
+            overflow-y: auto;
+            z-index: 999;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .admin-login-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 12px 40px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+        }
+
+        .admin-login-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .view-selected-btn {
+            margin: 20px 0;
+            padding: 12px 40px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-selected-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-images {
+            display: flex;
+            position: absolute;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100% + 340px));
+            }
+        }
+
+        .image-with-name {
+            text-align: center;
+        }
+
+        .fullscreen-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+    <button class="admin-login-btn">管理员登录</button>
+    <div class="container">
+        <h1>“粽韵传千年・AI绘端午”文化节宣传画征集令</h1>
+        <div class="upload-section">
+            <div class="upload-column">
+                <div class="frame" id="posterArea"></div>
+                <button class="upload-btn">宣传海报</button>
+                <input type="file" id="posterInput" hidden multiple accept="image/*">
+                <button class="view-selected-btn" id="leftViewSelected">查看已被选中的作品</button>
+            </div>
+            <div class="upload-column">
+                <div class="works-container">
+                    <div class="horizontal-group">
+                        <div class="frame scroll-container" id="cardArea">
+                            <div class="scroll-images"></div>
+                        </div>
+                        <div class="frame scroll-container" id="bookmarkArea">
+                            <div class="scroll-images"></div>
+                        </div>
+                    </div>
+                    <button class="upload-btn">文创作品</button>
+                    <input type="file" id="workInput" hidden multiple accept="image/*">
+                    <button class="view-selected-btn" id="rightViewSelected">查看已被选中的作品</button>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            <p>学校举办"粽韵传千年・AI绘端午"文化节，面向全校征集宣传画。<br>
+                组委会要求：<br>
+                技术特色：必须使用百度AI绘画工具创作，体现"科技与传统对话"理念。<br>
+                核心目标：画面需生动传递端午传统韵味（习俗活动、文化符号、节日氛围等）。<br>
+                成果用途：优秀作品将作为文化节主海报、定制文创礼品（如书签、明信片），并在学校微信公众号展出。</p>
+        </div>
+    </div>
+    <div class="fullscreen" id="fullscreen">
+        <button class="back-button" id="backButton">返回</button>
+        <div class="gallery-grid" id="gallery"></div>
+        <div class="fullscreen-text" id="fullscreenText"></div>
+    </div>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>管理员登录</h2>
+            <input type="text" id="adminUsername" placeholder="用户名">
+            <input type="password" id="adminPassword" placeholder="密码">
+            <button id="loginSubmit">登录</button>
+        </div>
+    </div>
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>批量上传图片</h2>
+            <input type="file" id="batchUploadInput" multiple accept="image/*">
+            <button id="uploadSubmit">上传</button>
+        </div>
+    </div>
+
+    <script>
+        const adminLoginBtn = document.querySelector('.admin-login-btn');
+        const loginModal = document.getElementById('loginModal');
+        const uploadModal = document.getElementById('uploadModal');
+        const closeLoginModal = document.querySelector('#loginModal .close');
+        const closeUploadModal = document.querySelector('#uploadModal .close');
+        const loginSubmit = document.getElementById('loginSubmit');
+        const uploadSubmit = document.getElementById('uploadSubmit');
+        const cardAreaScrollImages = document.querySelector('#cardArea .scroll-images');
+        const bookmarkAreaScrollImages = document.querySelector('#bookmarkArea .scroll-images');
+        const leftViewSelected = document.getElementById('leftViewSelected');
+        const rightViewSelected = document.getElementById('rightViewSelected');
+        const fullscreen = document.getElementById('fullscreen');
+        const gallery = document.getElementById('gallery');
+        const fullscreenText = document.getElementById('fullscreenText');
+        const backButton = document.getElementById('backButton');
+
+        adminLoginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'block';
+        });
+
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        closeUploadModal.addEventListener('click', () => {
+            uploadModal.style.display = 'none';
+        });
+
+        loginSubmit.addEventListener('click', () => {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const correctUsername = 'qyslxx';
+            const correctPassword = '000000';
+            if (username === correctUsername && password === correctPassword) {
+                loginModal.style.display = 'none';
+                uploadModal.style.display = 'block';
+            } else {
+                alert('用户名或密码错误，请重新输入。');
+            }
+        });
+
+        uploadSubmit.addEventListener('click', () => {
+            const files = document.getElementById('batchUploadInput').files;
+            const containers = [cardAreaScrollImages, bookmarkAreaScrollImages];
+
+            for (let i = 0; i < files.length; i++) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(files[i]);
+                const randomIndex = Math.floor(Math.random() * containers.length);
+                const targetContainer = containers[randomIndex];
+
+                if (targetContainer === cardAreaScrollImages) {
+                    img.style.width = '340px';
+                    img.style.height = '240px';
+                } else {
+                    img.style.width = '180px';
+                    img.style.height = '480px';
+                }
+
+                img.style.objectFit = 'cover';
+                targetContainer.appendChild(img);
+            }
+            uploadModal.style.display = 'none';
+        });
+
+        leftViewSelected.addEventListener('click', () => {
+            gallery.style.display = 'none';
+            fullscreenText.style.display = 'flex';
+            fullscreenText.textContent = '宣传海报正在火热征集中！';
+            fullscreen.style.display = 'block';
+        });
+
+        rightViewSelected.addEventListener('click', () => {
+            fullscreenText.style.display = 'none';
+            gallery.style.display = 'grid';
+            gallery.innerHTML = '';
+            const allImages = [];
+            const cardImages = cardAreaScrollImages.querySelectorAll('img');
+            const bookmarkImages = bookmarkAreaScrollImages.querySelectorAll('img');
+
+            cardImages.forEach(img => {
+                allImages.push({ src: img.src, name: 'card_image_' + allImages.length });
+            });
+
+            bookmarkImages.forEach(img => {
+                allImages.push({ src: img.src, name: 'bookmark_image_' + allImages.length });
+            });
+
+            allImages.forEach(item => {
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-with-name');
+
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.classList.add('gallery-item');
+
+                const name = document.createElement('p');
+                name.textContent = item.name;
+
+                imageContainer.appendChild(img);
+                imageContainer.appendChild(name);
+                gallery.appendChild(imageContainer);
+            });
+
+            fullscreen.style.display = 'block';
+        });
+
+        backButton.addEventListener('click', () => {
+            fullscreen.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (event.target === uploadModal) {
+                uploadModal.style.display = 'none';
+            }
+            if (event.target === fullscreen) {
+                fullscreen.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>    

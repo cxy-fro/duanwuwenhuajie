@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>端午起源</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* 竹子边框样式 */
+       .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+       .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+       .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* 内容容器样式 */
+       .container {
+            max-width: calc(100% - 240px);
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 图片容器样式 */
+       .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* 图片样式 */
+       .image-container img {
+            max-width: 32%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+    <div class="container">
+        <h1>端午起源</h1>
+        <p>端午节起源于中国古代，最初是夏季驱离瘟神和祭龙的节日，后来人们将端午节作为纪念屈原的节日。屈原是战国时期楚国的大臣，他倡导举贤授能、富国强兵，力主联齐抗秦，却遭到贵族子兰等人的强烈反对，屈原遭馋去职，被赶出都城，流放到沅、湘流域。他在流放中，写下了忧国忧民的《离骚》《天问》《九歌》等不朽诗篇，独具风貌，影响深远。公元前 278 年，秦军攻破楚国京都。屈原眼看自己的祖国被侵略，心如刀割，但是始终不忍舍弃自己的祖国，于五月五日，在写下了绝笔作《怀沙》之后，抱石投汨罗江身死，以自己的生命谱写了一曲壮丽的爱国主义乐章。传说屈原死后，楚国百姓哀痛异常，纷纷涌到汨罗江边去凭吊屈原。渔夫们划起船只，在江上来回打捞他的真身。有位渔夫拿出为屈原准备的饭团、鸡蛋等食物，“扑通、扑通”地丢进江里，说是让鱼龙虾蟹吃饱了，就不会去咬屈大夫的身体了。人们见后纷纷仿效。一位老医师则拿来一坛雄黄酒倒进江里，说是要药晕蛟龙水兽，以免伤害屈大夫。后来为怕饭团为蛟龙所食，人们想出用楝树叶包饭，外缠彩丝，发展成粽子。以后，在每年的五月初五，就有了龙舟竞渡、吃粽子、喝雄黄酒的风俗；以此来纪念爱国诗人屈原。</p>
+        <div class="image-container">
+            <!-- 请替换为实际的图片链接 -->
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200302/%E7%AB%AF%E5%8D%88%E8%B5%B7%E6%BA%90_1_rvp8l2.png" alt="端午起源相关图片1">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200302/%E7%AB%AF%E5%8D%88%E8%B5%B7%E6%BA%90_2_csbnml.jpg" alt="端午起源相关图片2">
+            <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745200302/%E7%AB%AF%E5%8D%88%E8%B5%B7%E6%BA%90_1_y0umln.jpg" alt="端午起源相关图片3">
+        </div>
+    </div>
+</body>
+
+</html>    
