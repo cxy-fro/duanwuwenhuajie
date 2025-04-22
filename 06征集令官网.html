@@ -428,6 +428,8 @@
             for (let i = 0; i < files.length; i++) {
                 const img = document.createElement('img');
                 img.src = URL.createObjectURL(files[i]);
+                img.dataset.fileName = files[i].name; // 新增文件名存储
+
                 const randomIndex = Math.floor(Math.random() * containers.length);
                 const targetContainer = containers[randomIndex];
 
@@ -461,12 +463,18 @@
             const bookmarkImages = bookmarkAreaScrollImages.querySelectorAll('img');
 
             cardImages.forEach(img => {
-                allImages.push({ src: img.src, name: 'card_image_' + allImages.length });
+            allImages.push({ 
+                src: img.src, 
+                name: img.dataset.fileName // 使用真实文件名
             });
+        });
 
-            bookmarkImages.forEach(img => {
-                allImages.push({ src: img.src, name: 'bookmark_image_' + allImages.length });
+        bookmarkImages.forEach(img => {
+            allImages.push({ 
+                src: img.src, 
+                name: img.dataset.fileName // 使用真实文件名
             });
+        });
 
             allImages.forEach(item => {
                 const imageContainer = document.createElement('div');
@@ -477,7 +485,8 @@
                 img.classList.add('gallery-item');
 
                 const name = document.createElement('p');
-                name.textContent = item.name;
+                name.textContent = item.name.substring(0, 15) + (item.name.length > 15 ? "..." : ""); // 截断长文件名
+            name.title = item.name; // hover显示完整名称
 
                 imageContainer.appendChild(img);
                 imageContainer.appendChild(name);
