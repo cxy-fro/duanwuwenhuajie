@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI绘端午文化节 - 端午元素图谱</title>
+    <style>
+        :root {
+            --primary-color: #5D8B68;
+            --secondary-color: #F0E6D0;
+            --accent-color: #C09F6E;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f5fff0 0%, #e6f3d7 100%);
+            font-family: '微软雅黑', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* 竹子边框部分，固定定位且z-index为1，确保在底层但不被遮挡 */
+       .bamboo-border {
+            position: fixed;
+            width: 80px;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary-color),
+                var(--primary-color) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            z-index: 1;
+        }
+
+        /* 左侧竹子边框，添加右侧边框 */
+       .left-border {
+            left: 0;
+            border-right: 3px solid var(--primary-color);
+        }
+
+        /* 右侧竹子边框，添加左侧边框 */
+       .right-border {
+            right: 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* 内容容器，z-index为2，高于竹子部分，但正常显示内容 */
+       .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin: 40px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+       .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+       .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+            font-size: 1.2em;
+        }
+
+       .navbar a:hover {
+            background-color: var(--accent-color);
+            color: black;
+        }
+
+        /* 图谱展示区域样式 */
+       .graphic-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+       .graphic-item {
+            width: 250px;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+       .graphic-item img {
+            width: 250px;
+            height: 200px;
+object-fit: cover;
+        }
+
+        #scene-content,
+        #item-content,
+        #character-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* 场景内容样式 */
+.image-container {
+    display: flex;
+    gap: 20px; /* 图片之间的间距 */
+    justify-content: space-between; /* 让图片均匀分布 */
+}
+
+.image-item {
+    width: calc((100% - 40px) / 3); /* 假设三张图片，减去间距计算每张图片宽度 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-item img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.image-item p {
+    text-align: center;
+    margin-top: 5px;
+}
+       .scene-category {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+       .category-label {
+            background-color: rgba(93, 139, 104, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            min-width: 120px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+       .image-container {
+            display: flex;
+            gap: 20px;
+        }
+
+       .image-item {
+            width: 150px;
+        }
+
+       .image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+       .image-item p {
+            text-align: center;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bamboo-border left-border"></div>
+    <div class="bamboo-border right-border"></div>
+    <div class="container">
+        <h1>端午元素图谱</h1>
+        <div class="navbar">
+            <a href="#" id="scene-button">场景</a>
+            <a href="#" id="item-button">物品</a>
+            <a href="#" id="character-button">人物</a>
+        </div>
+        <!-- 场景内容展示区域 -->
+        <div id="scene-content">
+            <div class="scene-category">
+                <div class="category-label">传统竞技</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319967/%E9%BE%99%E8%88%9F%E7%AB%9E%E6%B8%A1_qv5kjf.jpg" alt="传统竞技1">
+                        <p>龙舟竞渡</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319966/%E9%BE%99%E8%88%9F%E7%82%B9%E7%9D%9B_evb28a.jpg" alt="传统竞技2">
+                        <p>龙舟点睛</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319967/%E6%B0%B4%E4%B8%8A%E6%8A%A2%E9%B8%AD%E5%AD%90_knrwpy.png" alt="传统竞技3">
+                        <p>水上抢鸭子</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">家庭氛围</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319966/%E5%AE%B6%E5%BA%AD%E5%8C%85%E7%B2%BD_glhi6q.jpg" alt="家庭氛围1">
+                        <p>家庭包粽子</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319970/%E5%85%A8%E5%AE%B6%E9%A5%AE%E9%9B%84%E9%BB%84%E9%85%92_gh78sg.png" alt="家庭氛围2">
+                        <p>全家饮雄黄酒</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319965/%E9%95%BF%E8%BE%88%E6%95%99%E7%BC%96%E8%9B%8B%E5%85%9C_mddxa6.jpg" alt="家庭氛围3">
+                        <p>长辈教编蛋兜</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">民俗仪式</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319968/%E6%82%AC%E6%8C%82%E8%89%BE%E8%8D%89%E8%8F%96%E8%92%B2_qbipds.jpg" alt="民俗仪式1">
+                        <p>悬挂艾草菖蒲</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319967/%E5%BC%A0%E8%B4%B4%E9%92%9F%E9%A6%97%E7%94%BB%E5%83%8F_uonztu.jpg" alt="民俗仪式2">
+                        <p>张贴钟馗画像</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319967/%E6%91%86%E6%94%BE%E4%BA%94%E6%AF%92%E5%89%AA%E7%BA%B8_y7bunz.jpg" alt="民俗仪式3">
+                        <p>摆放五毒剪纸</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">文化活动</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319968/%E9%9D%9E%E9%81%97%E9%A6%99%E5%9B%8A%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%9D%8A_fruo6z.jpg" alt="文化活动1">
+                        <p>非遗香囊制作工坊</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319967/%E7%AB%AF%E5%8D%88%E8%AF%97%E8%AF%8D%E6%9C%97%E8%AF%B5%E4%BC%9A_ikhcbm.jpg" alt="文化活动2">
+                        <p>端午诗词朗诵会</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319968/%E4%BC%A0%E7%BB%9F%E6%8A%95%E5%A3%B6%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C_yunwsd.jpg" alt="文化活动3">
+                        <p>传统投壶游戏体验</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">商业场景</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319968/%E7%B2%BD%E5%AD%90%E5%B8%82%E9%9B%86_rbuxjg.jpg" alt="商业场景1">
+                        <p>粽子市集</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319968/%E9%BE%99%E8%88%9F%E4%B8%BB%E9%A2%98%E6%96%87%E5%88%9B%E5%B1%95_alku5s.jpg" alt="商业场景2">
+                        <p>龙舟主题文创展</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745319969/%E7%AB%AF%E5%8D%88%E4%B8%BB%E9%A2%98%E5%BA%99%E4%BC%9A_mvn75w.jpg" alt="商业场景3">
+                        <p>端午主题庙会</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 物品内容展示区域 -->
+         <div id="item-content">
+            <div class="scene-category">
+                <div class="category-label">食物</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322075/%E7%B3%AF%E7%B1%B3_gnqwq0.jpg" alt="糯米">
+                        <p>糯米</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322073/%E5%92%B8%E9%B8%AD%E8%9B%8B_ljbp8v.jpg" alt="咸鸭蛋">
+                        <p>咸鸭蛋</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322072/%E8%9C%9C%E6%9E%A3_m5nymk.jpg" alt="蜜枣">
+                        <p>蜜枣</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">饰品</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322072/%E4%BA%94%E5%BD%A9%E7%BB%B3_qtr9sc.jpg" alt="五彩绳">
+                        <p>五彩绳</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322073/%E8%99%8E%E5%A4%B4%E5%B8%BD_h0txhm.jpg" alt="虎头帽">
+                        <p>虎头帽</p>
+                    </div>
+                     <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322072/%E8%89%BE%E8%8D%89%E8%8A%B1%E7%8E%AF_fnxiai.jpg" alt="艾草花环">
+                        <p>艾草花环</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">其他</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322072/%E7%AB%AF%E5%8D%88%E4%B8%BB%E9%A2%98%E6%98%8E%E4%BF%A1%E7%89%87_l65syp.jpg" alt="端午主题明信片">
+                        <p>端午主题明信片</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322072/%E9%BE%99%E8%88%9F%E7%BA%B9%E6%A0%B7%E6%8A%98%E6%89%87_gpllre.jpg" alt="龙舟纹样折扇">
+                        <p>龙舟纹样折扇</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322071/%E7%AB%AF%E5%8D%88%E4%B8%BB%E9%A2%98%E4%B9%A6%E7%AD%BE_zyc1t5.jpg" alt="端午主题书签">
+                        <p>端午主题书签</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 人物内容展示区域 -->
+        
+        <div id="character-content">
+            <div class="scene-category">
+                <div class="category-label">历史人物</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322477/%E5%B1%88%E5%8E%9F_hnl445.jpg" alt="屈原">
+                        <p>屈原</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322476/%E6%9B%B9%E5%A8%A5_lekold.jpg" alt="曹娥">
+                        <p>曹娥</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-category">
+                <div class="category-label">现代人物</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322478/%E9%BE%99%E8%88%9F%E9%80%89%E6%89%8B_grt5in.jpg" alt="龙舟选手">
+                        <p>龙舟选手</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://res.cloudinary.com/dmjwufvpp/image/upload/v1745322478/%E9%A6%99%E5%9B%8A%E5%88%B6%E4%BD%9C%E8%80%81%E5%B8%88_ebvw5q.jpg" alt="香囊制作老师">
+                        <p>香囊制作老师</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const sceneButton = document.getElementById('scene-button');
+        const itemButton = document.getElementById('item-button');
+        const characterButton = document.getElementById('character-button');
+        const sceneContent = document.getElementById('scene-content');
+        const itemContent = document.getElementById('item-content');
+        const characterContent = document.getElementById('character-content');
+
+        function toggleContent(button, content, otherContents) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                // 隐藏其他内容区域
+                otherContents.forEach(otherContent => {
+                    otherContent.style.display = 'none';
+                });
+                // 切换当前内容区域的显示状态
+                if (content.style.display === 'none') {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        }
+
+        toggleContent(sceneButton, sceneContent, [itemContent, characterContent]);
+        toggleContent(itemButton, itemContent, [sceneContent, characterContent]);
+        toggleContent(characterButton, characterContent, [sceneContent, itemContent]);
+    </script>
+</body>
+
+</html>
